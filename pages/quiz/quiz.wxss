@@ -1,0 +1,220 @@
+.quiz-container {
+  min-height: 100vh;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  background-color: #0F172A;
+}
+
+/* ============ 沉浸式背景 ============ */
+.immersive-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%);
+  z-index: 0;
+}
+
+.ambient-light {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.light-1 {
+  width: 500rpx;
+  height: 500rpx;
+  background: rgba(139, 92, 246, 0.4);
+  top: 10%;
+  left: -100rpx;
+  animation: pulse 8s infinite alternate ease-in-out;
+}
+
+.light-2 {
+  width: 400rpx;
+  height: 400rpx;
+  background: rgba(236, 72, 153, 0.3);
+  bottom: 10%;
+  right: -50rpx;
+  animation: pulse 10s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.4; }
+  100% { transform: scale(1.2); opacity: 0.7; }
+}
+
+.glass-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40rpx 32rpx 80rpx;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 进度条 */
+.progress-section {
+  margin-bottom: 60rpx;
+}
+
+.glass-bar {
+  width: 100%;
+  height: 12rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6rpx;
+  overflow: hidden;
+  margin-bottom: 16rpx;
+  box-shadow: inset 0 2rpx 4rpx rgba(0,0,0,0.2);
+}
+
+.glow-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #F43F5E 0%, #FB923C 100%);
+  transition: width 0.3s ease;
+  border-radius: 6rpx;
+  box-shadow: 0 0 10rpx rgba(251, 146, 60, 0.6);
+}
+
+.progress-text {
+  display: block;
+  text-align: center;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  letter-spacing: 2rpx;
+}
+
+/* 题目区 */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 32rpx;
+  padding: 40rpx;
+  margin-bottom: 48rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.15);
+}
+
+.question-number {
+  display: inline-block;
+  background: linear-gradient(135deg, #F43F5E 0%, #FB923C 100%);
+  color: #fff;
+  padding: 10rpx 28rpx;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+  margin-bottom: 28rpx;
+  box-shadow: 0 4rpx 12rpx rgba(244, 63, 94, 0.3);
+}
+
+.question-text {
+  display: block;
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.6;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 选项区 */
+.options-section {
+  margin-bottom: 60rpx;
+  flex: 1;
+}
+
+.glass-item {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24rpx;
+  padding: 32rpx 28rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.glass-item.selected {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #FB923C;
+  box-shadow: 0 0 20rpx rgba(251, 146, 60, 0.3);
+}
+
+.option-label {
+  flex-shrink: 0;
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-right: 20rpx;
+  transition: all 0.3s ease;
+}
+
+.glass-item.selected .option-label {
+  background: linear-gradient(135deg, #F43F5E 0%, #FB923C 100%);
+  color: #fff;
+  border-color: transparent;
+}
+
+.option-text {
+  flex: 1;
+  font-size: 30rpx;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.6;
+}
+
+.option-check {
+  flex-shrink: 0;
+  color: #FB923C;
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-left: 16rpx;
+  text-shadow: 0 0 10rpx rgba(251, 146, 60, 0.4);
+}
+
+/* 按钮区 */
+.button-section {
+  padding: 0 20rpx;
+}
+
+.result-btn {
+  width: 100%;
+  height: 110rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glow-effect {
+  background: linear-gradient(135deg, #F43F5E 0%, #FB923C 100%);
+  border-radius: 55rpx;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  font-weight: 700;
+  letter-spacing: 4rpx;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16rpx 40rpx rgba(244, 63, 94, 0.4), inset 0 4rpx 10rpx rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.glow-effect:active {
+  transform: scale(0.96) translateY(4rpx);
+  box-shadow: 0 8rpx 20rpx rgba(244, 63, 94, 0.4), inset 0 2rpx 5rpx rgba(255, 255, 255, 0.4);
+}

@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/quiz/quiz",
+    "pages/result/result"
+  ],
+  "lazyCodeLoading": "requiredComponents",
+  "window": {
+    "navigationBarTitleText": "猫咪MBTI人格测试",
+    "navigationBarBackgroundColor": "#FFE4D6",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FFF8F0",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

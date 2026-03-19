@@ -1,0 +1,41 @@
+<view class="container result-container">
+  <!-- 沉浸式动态深海/星空/梦幻背景 -->
+  <view class="immersive-bg"></view>
+  <view class="ambient-light light-1"></view>
+  <view class="ambient-light light-2"></view>
+
+  <view class="glass-content">
+    <!-- 猫咪图片卡片 -->
+    <view class="image-card glass-panel">
+      <image class="cat-image floating-cat" src="{{resultData.image}}" mode="aspectFill"></image>
+    </view>
+
+    <!-- 结果信息卡片 -->
+    <view class="result-card glass-panel">
+      <view class="type-badge">{{resultData.type}}</view>
+      <text class="result-title">{{resultData.title}}</text>
+
+      <!-- 标签 -->
+      <view class="tags-section">
+        <view class="tag-item glass-tag" wx:for="{{resultData.tags}}" wx:key="index">
+          {{item}}
+        </view>
+      </view>
+
+      <!-- 描述 -->
+      <view class="desc-section glass-desc">
+        <text class="desc-text">{{resultData.desc}}</text>
+      </view>
+    </view>
+
+    <!-- 按钮区 -->
+    <view class="button-section">
+      <button class="btn-secondary retry-btn glass-btn" bindtap="retryQuiz">
+        再测一次
+      </button>
+      <button class="btn-primary home-btn glow-effect" bindtap="backHome">
+        返回首页
+      </button>
+    </view>
+  </view>
+</view>

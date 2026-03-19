@@ -1,0 +1,277 @@
+/* ============ 容器基础 ============ */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  background-color: #0F172A; /* 深色基底 */
+}
+
+/* ============ 沉浸式背景 ============ */
+.immersive-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%);
+  z-index: 0;
+}
+
+/* 动态光斑 */
+.ambient-light {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.light-1 {
+  width: 600rpx;
+  height: 600rpx;
+  background: rgba(236, 72, 153, 0.4); /* 粉色光暈 */
+  top: -100rpx;
+  left: -100rpx;
+  animation: pulse 8s infinite alternate ease-in-out;
+}
+
+.light-2 {
+  width: 500rpx;
+  height: 500rpx;
+  background: rgba(139, 92, 246, 0.5); /* 紫色光暈 */
+  bottom: -50rpx;
+  right: -50rpx;
+  animation: pulse 10s infinite alternate-reverse ease-in-out;
+}
+
+.light-3 {
+  width: 400rpx;
+  height: 400rpx;
+  background: rgba(245, 158, 11, 0.3); /* 橙色光暈 */
+  top: 40%;
+  left: 30%;
+  animation: pulse 12s infinite alternate ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8) translate(0, 0); opacity: 0.4; }
+  100% { transform: scale(1.2) translate(50rpx, 50rpx); opacity: 0.7; }
+}
+
+/* ============ 主内容毛玻璃容器 ============ */
+.glass-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 60rpx 40rpx 80rpx;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* 整个内容区也可以叠一层极淡的薄边毛玻璃（可选），现在放在子元素上 */
+}
+
+/* ============ 标题区 ============ */
+.title-section {
+  text-align: center;
+  margin-top: 40rpx;
+  margin-bottom: 60rpx;
+}
+
+.main-title {
+  display: block;
+  font-size: 56rpx;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 24rpx;
+  letter-spacing: 4rpx;
+  text-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.4);
+}
+
+.subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.3);
+}
+
+/* ============ 轮播图区 ============ */
+.swiper-section {
+  width: 100%;
+  margin-bottom: 60rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.cat-swiper {
+  height: 680rpx;
+  width: 100%;
+}
+
+.glass-panel {
+  height: 600rpx;
+  margin: 20rpx 10rpx;
+  border-radius: 40rpx;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16rpx 48rpx rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.cat-preview-image.floating-cat {
+  width: 80%;
+  height: 80%;
+  z-index: 2;
+  animation: float-cat 6s ease-in-out infinite;
+  filter: drop-shadow(0 20rpx 30rpx rgba(0,0,0,0.3));
+}
+
+@keyframes float-cat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15rpx); }
+}
+
+.cat-type-label {
+  position: absolute;
+  bottom: 40rpx;
+  font-size: 40rpx;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.15);
+  letter-spacing: 12rpx;
+  z-index: 1;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* ============ 价值说明区 ============ */
+.value-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60rpx;
+}
+
+.glass-pill {
+  flex: 1;
+  margin: 0 10rpx;
+  padding: 24rpx 0;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+}
+
+.value-icon {
+  font-size: 48rpx;
+  margin-bottom: 12rpx;
+  filter: drop-shadow(0 4rpx 8rpx rgba(0,0,0,0.2));
+}
+
+.value-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* ============ 底部操作区 ============ */
+.action-section {
+  width: 100%;
+  padding-bottom: 40rpx;
+}
+
+.tip-section {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.tip-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 1rpx;
+}
+
+.start-btn.glow-effect {
+  width: 100%;
+  height: 110rpx;
+  background: linear-gradient(135deg, #F43F5E 0%, #FB923C 100%);
+  border-radius: 55rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  font-weight: 700;
+  letter-spacing: 4rpx;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16rpx 40rpx rgba(244, 63, 94, 0.4), inset 0 4rpx 10rpx rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.start-btn.glow-effect::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  animation: shine 4s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}
+
+.start-btn.glow-effect:active {
+  transform: scale(0.96) translateY(4rpx);
+  box-shadow: 0 8rpx 20rpx rgba(244, 63, 94, 0.4), inset 0 2rpx 5rpx rgba(255, 255, 255, 0.4);
+}
+
+.btn-arrow {
+  margin-left: 16rpx;
+  font-size: 40rpx;
+  font-weight: 900;
+  transition: transform 0.3s ease;
+}
+
+/* ============ 进场动画 ============ */
+.fade-in-down, .fade-in-scale, .fade-in-up, .fade-in-bounce {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-down { transform: translateY(-40rpx); }
+.fade-in-scale { transform: scale(0.92); }
+.fade-in-up { transform: translateY(40rpx); }
+.fade-in-bounce { transform: translateY(30rpx); }
+
+.home-container.ready .fade-in-down { opacity: 1; transform: translateY(0); }
+.home-container.ready .title-section { transition-delay: 0.1s; }
+.home-container.ready .fade-in-scale { opacity: 1; transform: scale(1); transition-delay: 0.3s; }
+.home-container.ready .fade-in-up { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+.home-container.ready .fade-in-bounce { opacity: 1; transform: translateY(0); transition-delay: 0.7s; }
