@@ -1,4 +1,5 @@
 {
-  "navigationBarTitleText": "测试结果",
+  "navigationBarTitleText": "MBTI结果图鉴",
+  "navigationStyle": "custom",
   "usingComponents": {}
 }

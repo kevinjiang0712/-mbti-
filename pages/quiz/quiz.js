@@ -9,8 +9,7 @@ Page({
     currentQuestion: {},
     selectedOption: null,
     scores: {},
-    progress: 8.33, // 第一题的初始进度 (1/12)*100
-    isLastQuestion: false
+    progress: 8.33 // 第一题的初始进度 (1/12)*100
   },
 
   /**
@@ -56,11 +55,9 @@ Page({
   nextQuestion() {
     const nextIndex = this.data.currentIndex + 1
 
-    // 检查是否为最后一题
+    // 最后一题答完，直接跳转结果页
     if (nextIndex >= this.data.totalQuestions) {
-      this.setData({
-        isLastQuestion: true
-      })
+      this.viewResult()
       return
     }
 

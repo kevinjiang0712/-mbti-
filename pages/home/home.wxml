@@ -1,77 +1,47 @@
-<view class="container home-container {{pageReady ? 'ready' : ''}}">
-  <!-- 沉浸式动态深海/星空/梦幻背景 -->
-  <view class="immersive-bg"></view>
-  <view class="ambient-light light-1"></view>
-  <view class="ambient-light light-2"></view>
-  <view class="ambient-light light-3"></view>
+<view class="container mystical-home {{pageReady ? 'ready' : ''}}">
+  <!-- 背景层：星空与魔法光晕 -->
+  <view class="bg-stars"></view>
+  <view class="bg-glow top-glow"></view>
+  <view class="bg-glow bottom-glow"></view>
 
-  <!-- 主内容容器（毛玻璃质感） -->
-  <view class="glass-content">
-    
-    <!-- 标题区 -->
-    <view class="title-section fade-in-down">
-      <text class="main-title">猫咪 MBTI 人格测试</text>
-      <text class="subtitle">用 12 个问题，彻底读懂你家猫的内心世界</text>
+  <!-- 新增：魔法阵星轨背景 -->
+  <view class="astrolabe-bg">
+    <view class="astrolabe">
+      <view class="astro-inner">
+        <view class="astro-center"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 新增：巨大月相与流星群 (方案C) -->
+  <view class="moon"></view>
+  <view class="meteor m1"></view>
+  <view class="meteor m2"></view>
+  <view class="meteor m3"></view>
+
+  <!-- 内容主视觉 -->
+  <view class="content-wrapper">
+    <!-- 标题与副标题 (严格遵循PRD) -->
+    <view class="header-section fade-in-down">
+      <view class="headline">猫咪 MBTI 人格测试</view>
+      <view class="sub-headline">12个问题测出“人格类型”</view>
     </view>
 
-    <!-- 猫咪图片轮播区 -->
-    <view class="swiper-section fade-in-scale">
-      <swiper
-        class="cat-swiper"
-        indicator-dots="{{true}}"
-        indicator-color="rgba(255, 255, 255, 0.4)"
-        indicator-active-color="#FFFFFF"
-        autoplay="{{true}}"
-        interval="3500"
-        duration="600"
-        circular="{{true}}"
-        bindchange="onSwiperChange"
-        previous-margin="30rpx"
-        next-margin="30rpx"
-      >
-        <swiper-item wx:for="{{displayCats}}" wx:key="type">
-          <view class="swiper-card glass-panel">
-            <image
-              class="cat-preview-image floating-cat"
-              src="{{item.image}}"
-              mode="aspectFit"
-              bindlongpress="onImageLongPress"
-              data-type="{{item.type}}"
-            ></image>
-            <view class="cat-type-label">{{item.type}}</view>
-          </view>
-        </swiper-item>
-      </swiper>
-    </view>
-
-    <!-- 价值说明区 -->
-    <view class="value-card fade-in-up">
-      <view class="value-item glass-pill">
-        <text class="value-icon">🎯</text>
-        <text class="value-text">12题精准</text>
-      </view>
-      <view class="value-item glass-pill">
-        <text class="value-icon">🐱</text>
-        <text class="value-text">16种人格</text>
-      </view>
-      <view class="value-item glass-pill">
-        <text class="value-icon">✨</text>
-        <text class="value-text">MBTI理论</text>
+    <!-- 中心主视觉：参考你的精美塔罗牌画风 -->
+    <view class="hero-section fade-in-scale">
+      <view class="tarot-card-frame floating-animation">
+        <image class="tarot-image" src="cloud://wechat-env-260305-9em2hcd281d948.7765-wechat-env-260305-9em2hcd281d948-1408536075/assets/tarot_cat.png" mode="aspectFill"></image>
+        <view class="tarot-card-border"></view>
+        <view class="tarot-card-glow"></view>
       </view>
     </view>
 
-    <!-- 开始按钮区 -->
-    <view class="action-section fade-in-bounce">
-      <view class="tip-section">
-        <text class="tip-icon">💡</text>
-        <text class="tip-text">请根据猫咪在日常多数情况下的表现进行选择</text>
-      </view>
-      
-      <button class="btn-primary start-btn glow-effect" bindtap="startQuiz">
-        <text class="btn-text">立即探索</text>
-        <text class="btn-arrow">→</text>
+    <!-- 底部操作区 (严格遵循PRD) -->
+    <view class="action-section fade-in-up">
+      <view class="tip-text">按多数情况下表现选择</view>
+      <button class="primary-btn mystical-glow-btn" bindtap="startQuiz">
+        <text class="btn-text">开始测猫</text>
       </button>
     </view>
-
   </view>
 </view>

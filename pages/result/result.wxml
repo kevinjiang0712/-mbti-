@@ -1,41 +1,71 @@
 <view class="container result-container">
-  <!-- 沉浸式动态深海/星空/梦幻背景 -->
+  <!-- 沉浸式动态背景 -->
   <view class="immersive-bg"></view>
-  <view class="ambient-light light-1"></view>
-  <view class="ambient-light light-2"></view>
+  <!-- 背景月亮与流星 -->
+  <view class="moon-bg"></view>
+  <view class="star-particles"></view>
 
+  <!-- 离屏 Canvas 用于绘制海报 -->
+  <canvas type="2d" id="posterCanvas" class="poster-canvas"></canvas>
+  
   <view class="glass-content">
-    <!-- 猫咪图片卡片 -->
-    <view class="image-card glass-panel">
-      <image class="cat-image floating-cat" src="{{resultData.image}}" mode="aspectFill"></image>
+    <!-- 绝美 SSR 闪卡容器 -->
+    <view class="ssr-card-wrapper fade-in-up">
+      <view class="ssr-card">
+        <!-- 卡牌全息镭射边框 -->
+        <view class="ssr-glow-border"></view>
+        <!-- 卡牌内部插画，完整绑定原来的图片逻辑 -->
+        <image class="ssr-image" src="{{resultData.image}}" mode="aspectFill"></image>
+        
+        <!-- 卡牌浮雕标志 SSR (UI 装饰) -->
+        <view class="ssr-badge">SSR</view>
+      </view>
     </view>
 
-    <!-- 结果信息卡片 -->
-    <view class="result-card glass-panel">
-      <view class="type-badge">{{resultData.type}}</view>
-      <text class="result-title">{{resultData.title}}</text>
-
-      <!-- 标签 -->
+    <!-- 高亮排版的类型与名称 -->
+    <view class="typography-section fade-in-scale">
+      <view class="type-title">{{resultData.type}} - {{resultData.title}}</view>
+      
+      <!-- 标签转化为魔法水晶片 -->
       <view class="tags-section">
-        <view class="tag-item glass-tag" wx:for="{{resultData.tags}}" wx:key="index">
-          {{item}}
+        <view class="magic-tag" wx:for="{{resultData.tags}}" wx:key="index">
+          <text class="tag-dot">✦</text> {{item}}
         </view>
       </view>
 
-      <!-- 描述 -->
-      <view class="desc-section glass-desc">
+      <view class="desc-section">
         <text class="desc-text">{{resultData.desc}}</text>
       </view>
     </view>
 
-    <!-- 按钮区 -->
-    <view class="button-section">
-      <button class="btn-secondary retry-btn glass-btn" bindtap="retryQuiz">
-        再测一次
+    <!-- 底部功能按钮区 -->
+    <view class="actions-wrapper fade-in-up-delayed">
+      <view class="btn-row">
+        <button class="secondary-btn" bindtap="generatePoster">
+          <text class="btn-icon">✧</text>
+          <text class="btn-text">保存海报</text>
+        </button>
+        <button class="primary-btn glow-effect" open-type="share">
+          <text class="btn-icon">✦</text>
+          <text class="btn-text">分享好友</text>
+        </button>
+      </view>
+      <view class="back-link" bindtap="backHome">返回魔法入口</view>
+    </view>
+  </view>
+
+  <!-- 海报预览弹窗 -->
+  <view class="poster-modal {{showPosterModal ? 'show' : ''}}" catchtouchmove="true">
+    <view class="poster-modal-mask" bindtap="closePosterModal"></view>
+    <view class="poster-modal-content">
+      <view class="poster-preview-wrapper">
+        <image class="poster-preview" src="{{posterImagePath}}" mode="aspectFit"></image>
+      </view>
+      <button class="save-btn" bindtap="savePosterToAlbum">
+        <text class="btn-icon">✦</text>
+        <text class="btn-text">保存到相册</text>
       </button>
-      <button class="btn-primary home-btn glow-effect" bindtap="backHome">
-        返回首页
-      </button>
+      <view class="close-btn" bindtap="closePosterModal">取消</view>
     </view>
   </view>
 </view>

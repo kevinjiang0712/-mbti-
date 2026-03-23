@@ -1,7 +1,13 @@
 // app.js
 App({
   onLaunch() {
-    // 小程序启动时初始化
+    // 初始化云开发
+    if (wx.cloud) {
+      wx.cloud.init({
+        env: 'wechat-env-260305-9em2hcd281d948',
+        traceUser: true
+      })
+    }
     console.log('猫咪CBTI测试小程序启动')
   },
 

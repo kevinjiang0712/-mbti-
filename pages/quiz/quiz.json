@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "测试中",
-  "usingComponents": {},
-  "disableScroll": false
+  "navigationBarTitleText": "我的猫咪测试",
+  "navigationStyle": "custom",
+  "usingComponents": {}
 }

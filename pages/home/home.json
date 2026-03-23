@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "猫咪MBTI",
+  "navigationStyle": "custom",
   "usingComponents": {}
 }

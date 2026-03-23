@@ -1,52 +1,67 @@
 <view class="container quiz-container">
-  <!-- 沉浸式动态深海/星空/梦幻背景 -->
+  <!-- 绝美星云与极光背景 -->
   <view class="immersive-bg"></view>
-  <view class="ambient-light light-1"></view>
-  <view class="ambient-light light-2"></view>
+  <view class="nebula-1"></view>
+  <view class="nebula-2"></view>
+  <view class="twinkling-stars"></view>
   
-  <view class="glass-content">
-    <!-- 进度条 -->
-    <view class="progress-section">
-      <view class="progress-bar glass-bar">
-        <view class="progress-fill glow-fill" style="width: {{progress}}%"></view>
+  <view class="glass-content fade-in-up">
+    <!-- 顶部星轨进度条 (精美复原的折线星座图) -->
+    <view class="quiz-header">
+      <view class="progress-section">
+        <view class="constellation-track">
+          <view class="track-active-line" style="width: {{progress}}%"></view>
+          <view class="track-star-head" style="left: {{progress}}%">✦</view>
+        </view>
       </view>
-      <text class="progress-text">{{currentIndex + 1}}/{{totalQuestions}}</text>
     </view>
 
-    <!-- 题目区 -->
+    <!-- 顶级魔法塔罗题板 -->
     <view class="question-section glass-panel">
-      <view class="question-number">Q{{currentIndex + 1}}</view>
+      <!-- 面板内发光与边框装饰 -->
+      <view class="panel-inner-glow"></view>
+      <view class="panel-ornaments">
+        <view class="corner-top-right"></view>
+        <view class="corner-bottom-left"></view>
+      </view>
+      <!-- 月相暗纹水印 -->
+      <view class="watermark-group"></view>
+      
+      <!-- 顶部高奢排版 -->
+      <view class="question-header-text">QUIZ</view>
+      <view class="question-number">QUESTION {{currentIndex + 1}} of {{totalQuestions}}</view>
+      
+      <!-- 古典分割线 -->
+      <view class="classic-divider">
+        <view class="divider-line"></view>
+        <view class="divider-diamond">✧</view>
+        <view class="divider-line"></view>
+      </view>
+
+      <!-- 问卷题目（古籍发光字体效果） -->
       <text class="question-text">{{currentQuestion.question}}</text>
     </view>
 
-    <!-- 选项区 -->
+    <!-- 胶囊发光选项区 -->
     <view class="options-section">
-      <view
-        class="option-item glass-item {{selectedOption === 0 ? 'selected glow-border' : ''}}"
-        bindtap="selectOption"
-        data-index="0"
-      >
+      <!-- 选项A -->
+      <view class="option-item glass-pill {{selectedOption === 0 ? 'selected' : ''}}" bindtap="selectOption" data-index="0">
+        <view class="pill-border"></view>
         <view class="option-label">A</view>
         <text class="option-text">{{currentQuestion.options[0].text}}</text>
-        <view class="option-check" wx:if="{{selectedOption === 0}}">✓</view>
+        <view class="option-icon-right" wx:if="{{selectedOption === 0}}">✦</view>
+        <view class="option-icon-right dimmed" wx:else>✧</view>
       </view>
 
-      <view
-        class="option-item glass-item {{selectedOption === 1 ? 'selected glow-border' : ''}}"
-        bindtap="selectOption"
-        data-index="1"
-      >
+      <!-- 选项B -->
+      <view class="option-item glass-pill {{selectedOption === 1 ? 'selected' : ''}}" bindtap="selectOption" data-index="1">
+        <view class="pill-border"></view>
         <view class="option-label">B</view>
         <text class="option-text">{{currentQuestion.options[1].text}}</text>
-        <view class="option-check" wx:if="{{selectedOption === 1}}">✓</view>
+        <view class="option-icon-right" wx:if="{{selectedOption === 1}}">✦</view>
+        <view class="option-icon-right dimmed" wx:else>✧</view>
       </view>
     </view>
 
-    <!-- 查看结果按钮（仅最后一题显示） -->
-    <view class="button-section" wx:if="{{isLastQuestion && selectedOption !== null}}">
-      <button class="btn-primary result-btn glow-effect" bindtap="viewResult">
-        查看结果
-      </button>
-    </view>
   </view>
 </view>
